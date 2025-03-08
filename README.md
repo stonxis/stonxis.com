@@ -1,84 +1,52 @@
-# Turborepo starter
+## Planos de Negócios
 
-This Turborepo starter is maintained by the Turborepo core team.
+### Problema e Oportunidade
 
-## Using this example
+Problemas identificados:
+- Falta de educação financeira: 64% dos millennials não sabem como começar a investir (FGV, 2023).
 
-Run the following command:
+- Baixo engajamento: Apps tradicionais de finanças têm taxa de abandono de 78% em 3 meses (App Annie, 2024).
 
-```sh
-npx create-turbo@latest
-```
+- Falta de personalização: Soluções existentes não se adaptam ao perfil do usuário (ex: freelancers, jovens).
 
-## What's inside?
+### Público Alvo
 
-This Turborepo includes the following packages/apps:
+Segmentação Primária:
+- Jovens adultos (18-35 anos): 68% usam apps móveis para controle financeiro (Pew Research, 2023). 
 
-### Apps and Packages
+- Freelancers: 42% têm renda irregular e dificuldade de planejamento (Upwork, 2024).  
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- Investidores iniciantes: 81% buscam conteúdo educativo simplificado (Nuveen, 2023).
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+Personas:
+- Persona 1: "Ana, 25 anos, designer freelancer, quer economizar para viagem, mas não sabe por onde começar." 
 
-### Utilities
+- Persona 2: "Carlos, 30 anos, empregado CLT, busca investir mas acha o mercado complexo."
 
-This Turborepo has some additional tools already setup for you:
+### Projeções Financeiras (Primeiros 3 anos)
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+Métrica            | Ano 1     | Ano 2     | Ano 3       |
+-------------------|-----------|-----------|-------------|
+Usuários Ativos    | `100.000` | `450.000` | `1.200.000` |
+Conversão Premium  | `5%`      | `8%`      | `12%`       |
+Receita Total (R$) | `2,5M`    | `15M`     | `45M`       |
+Margem Líquida     | `-20%`    | `15%`     | `25%`       |
 
-### Build
+### Solução
+#### Funcionalidades
+1. Gamificação:
+    - Sistema de Níveis: Usuários sobem de nível ao completar tarefas (ex: registrar 10 gastos = "Novato Economista").
 
-To build all apps and packages, run the following command:
+    - Moeda Virtual: "StonxCoins" para desbloquear cursos premium ou descontos em parceiros.
 
-```
-cd my-turborepo
-pnpm build
-```
+    - Desafios em Grupo: Competições de economia (ex: "Economize R$ 500 em 30 dias com sua comunidade").
 
-### Develop
+2. Gestão Financeira:
+    - Automação via Open Banking: Conecta a contas bancárias, cartões e investimentos (API Plaid/EUA, Pix no Brasil).
 
-To develop all apps and packages, run the following command:
+    - Metas Dinâmicas: Sugere objetivos com base no perfil (ex: "Você pode economizar R$ 200/mês cortando delivery").
 
-```
-cd my-turborepo
-pnpm dev
-```
+3. Educação Personalizada:
+    - Cursos em Formato de Missões: Lições de 5 minutos com quizzes interativos (ex: "Missão Ações: Aprenda a investir em 7 dias").
 
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+    - Relatórios de Progresso: Comparativo com usuários similares (ex: "Você está no top 30% dos economizadores da sua idade").
