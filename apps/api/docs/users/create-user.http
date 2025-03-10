@@ -1,9 +1,9 @@
 POST http://localhost:3333/users HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer `token`
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImMyNTIxYjgwLTczNmEtNDgyNy04OTVhLTlkZmE1MTIwM2ZhMSIsIm5hbWUiOiJqb3NlIiwiZW1haWwiOiJzb3Vqb3NlZXVnZW5pb0BnbWFpbC5jb20iLCJpYXQiOjE3NDE1NzM0NzksImV4cCI6MTc0MTY1OTg3OX0.wqbE1MoFJAMcd11P09QagY-vbfrkY67fQQovz__zL00
 
 {
     "name": "test",
-    "email": "test@test.com",
+    "email": "testtttt@test.com",
     "password": "test"
 }

@@ -54,11 +54,14 @@ export default async function userRoutes(app: FastifyInstance) {
         })
 
         rep.code(201).send({
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            createdAt: user.createdAt,
-            updatedAt: user.updatedAt
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                createdAt: user.createdAt,
+                updatedAt: user.updatedAt,
+            },
+            message: 'Usuário criado com sucesso.'
         })
     })
 
@@ -130,11 +133,14 @@ export default async function userRoutes(app: FastifyInstance) {
         });
 
         rep.code(200).send({
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            createdAt: user.createdAt,
-            updatedAt: user.updatedAt
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                createdAt: user.createdAt,
+                updatedAt: user.updatedAt
+            },
+            message: 'Usuário atualizado com sucesso.'
         });
     });
 
@@ -146,10 +152,13 @@ export default async function userRoutes(app: FastifyInstance) {
             }
         })
         rep.code(200).send({
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            createdAt: user.createdAt
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                createdAt: user.createdAt
+            },
+            message: 'Usuário deletado com sucesso.'
         })
     })
 

@@ -31,9 +31,12 @@ export default async function authRoutes(app: FastifyInstance) {
         })
 
         rep.code(201).send({
-            id: user.id,
-            name: user.name,
-            email: user.email
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email
+            },
+            message: 'Usuário criado com sucesso!'
         })
 
     })
@@ -67,7 +70,8 @@ export default async function authRoutes(app: FastifyInstance) {
         )
 
         rep.code(200).send({
-            token
+            token,
+            message: 'Login realizado com sucesso.'
         })
     })
 
