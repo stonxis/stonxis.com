@@ -71,7 +71,7 @@ export default async function authRoutes(app: FastifyInstance) {
         })
     })
 
-    app.get('/profile', { preHandler: [app.authenticate] }, async (req, rep) => {
+    app.get('/profile', { preHandler: [app.authenticateUser] }, async (req, rep) => {
         rep.send(req.user)
     })
 }

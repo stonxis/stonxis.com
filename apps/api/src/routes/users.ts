@@ -3,13 +3,13 @@ import { prisma } from "../lib/prisma";
 import bcrypt from 'bcrypt'
 
 export default async function userRoutes(app: FastifyInstance) {
-    app.get('/users', async (req, rep) => {
+    app.get('/users', { preHandler: [app.authenticateUser, app.authenticateAdmin] }, async (req, rep) => {
         const { id, name, email, createdAt } = req.query as {
-             id?: string, 
-             name?: string, 
-             email?: string, 
-             createdAt?: Date, 
-            }
+            id?: string,
+            name?: string,
+            email?: string,
+            createdAt?: Date,
+        }
 
         const users = await prisma.user.findMany({
             where: {
@@ -28,7 +28,7 @@ export default async function userRoutes(app: FastifyInstance) {
         })))
     })
 
-    app.post('/users', async (req, rep) => {
+    app.post('/users', { preHandler: [app.authenticateUser, app.authenticateAdmin] }, async (req, rep) => {
         const { name, email, password } = req.body as { name: string, email: string, password: string }
 
         const hashedPassword = await bcrypt.hash(password, 10)
@@ -62,7 +62,7 @@ export default async function userRoutes(app: FastifyInstance) {
         })
     })
 
-    app.get('/users/:id', async (req, rep) => {
+    app.get('/users/:id', { preHandler: [app.authenticateUser, app.authenticateAdmin] }, async (req, rep) => {
         const { id } = req.params as { id: string }
         const user = await prisma.user.findUnique({
             where: {
@@ -83,41 +83,41 @@ export default async function userRoutes(app: FastifyInstance) {
         })
     })
 
-    app.put('/users/:id', async (req, rep) => {
+    app.put('/users/:id', { preHandler: [app.authenticateUser, app.authenticateAdmin] }, async (req, rep) => {
         const { id } = req.params as { id: string };
         const { name, email, password } = req.body as { name: string, email: string, password: string };
-    
+
         let hashedPassword = password;
         if (password) {
             hashedPassword = await bcrypt.hash(password, 10);
         }
-    
+
         const userExists = await prisma.user.findUnique({
             where: {
                 id: id
             }
         });
-    
+
         if (!userExists) {
             return rep.code(404).send({
                 message: 'Usuário não encontrado.'
             });
         }
-    
+
         if (email && email !== userExists.email) {
             const emailExists = await prisma.user.findUnique({
                 where: {
                     email
                 }
             });
-    
+
             if (emailExists) {
                 return rep.code(400).send({
                     message: 'O email fornecido já está em uso por outro usuário.'
                 });
             }
         }
-    
+
         const user = await prisma.user.update({
             where: {
                 id
@@ -128,7 +128,7 @@ export default async function userRoutes(app: FastifyInstance) {
                 password: hashedPassword
             }
         });
-    
+
         rep.code(200).send({
             id: user.id,
             name: user.name,
@@ -138,7 +138,7 @@ export default async function userRoutes(app: FastifyInstance) {
         });
     });
 
-    app.delete('/users/:id', async (req, rep) => {
+    app.delete('/users/:id', { preHandler: [app.authenticateUser, app.authenticateAdmin] }, async (req, rep) => {
         const { id } = req.params as { id: string }
         const user = await prisma.user.delete({
             where: {

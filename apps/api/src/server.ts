@@ -1,51 +1,21 @@
-import jwt from "@fastify/jwt";
-import Fastify from "fastify";
 import authRoutes from "./routes/auth";
 import userRoutes from "./routes/users";
-import rateLimit from "@fastify/rate-limit";
-import cors from '@fastify/cors'
+import { app } from "./lib/fastify";
+import { registerRateLimit } from "./config/rateLimit";
+import { addHeaders } from "./config/headers";
+import { registerCors } from "./config/cors";
+import { registerJwt } from "./config/jwt";
+import { authenticateAdmin } from "./hooks/authenticateAdmin";
+import { authenticateUser } from "./hooks/authenticateUser";
 
-const app = Fastify({
-    logger: {
-        transport: {
-            target: 'pino-pretty',
-            options: {
-                translateTime: 'SYS:standard',
-                colorize: true,
-                ignore: 'pid,hostname',
-                level: 'info'
-            }
-        }
-    }
-})
+registerRateLimit(app)
+registerCors(app)
+registerJwt(app)
 
-app.register(rateLimit, {
-    max: 5,
-    timeWindow: '1 minute'
-})
+app.addHook('onSend', addHeaders)
 
-app.register(cors, {
-    origin: [
-        'https://stonxis.com',
-        'https://app.stonxis.com',
-        'https://docs.stonxis.com',
-    ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-})
-
-app.register(jwt, {
-    secret: process.env.JWT_SECRET ?? 'secret',
-})
-
-app.decorate('authenticate', async (req: any, rep: any) => {
-    try {
-        await req.jwtVerify()
-    } catch (err) {
-        return rep.status(401).send({
-            message: 'Token inválido'
-        })
-    }
-})
+app.decorate('authenticateAdmin', authenticateAdmin)
+app.decorate('authenticateUser', authenticateUser)
 
 app.register(authRoutes)
 app.register(userRoutes)
