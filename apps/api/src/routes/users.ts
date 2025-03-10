@@ -3,7 +3,7 @@ import { prisma } from "../lib/prisma";
 import bcrypt from 'bcrypt'
 
 export default async function userRoutes(app: FastifyInstance) {
-    app.get('/users', { preHandler: [app.authenticateUser, app.authenticateAdmin] }, async (req, rep) => {
+    app.get('/users', { preHandler: [app.authenticateAdmin] }, async (req, rep) => {
         const { id, name, email, createdAt } = req.query as {
             id?: string,
             name?: string,
@@ -28,7 +28,7 @@ export default async function userRoutes(app: FastifyInstance) {
         })))
     })
 
-    app.post('/users', { preHandler: [app.authenticateUser, app.authenticateAdmin] }, async (req, rep) => {
+    app.post('/users', { preHandler: [app.authenticateAdmin] }, async (req, rep) => {
         const { name, email, password } = req.body as { name: string, email: string, password: string }
 
         const hashedPassword = await bcrypt.hash(password, 10)
@@ -65,7 +65,7 @@ export default async function userRoutes(app: FastifyInstance) {
         })
     })
 
-    app.get('/users/:id', { preHandler: [app.authenticateUser, app.authenticateAdmin] }, async (req, rep) => {
+    app.get('/users/:id', { preHandler: [app.authenticateAdmin] }, async (req, rep) => {
         const { id } = req.params as { id: string }
         const user = await prisma.user.findUnique({
             where: {
@@ -86,7 +86,7 @@ export default async function userRoutes(app: FastifyInstance) {
         })
     })
 
-    app.put('/users/:id', { preHandler: [app.authenticateUser, app.authenticateAdmin] }, async (req, rep) => {
+    app.put('/users/:id', { preHandler: [app.authenticateAdmin] }, async (req, rep) => {
         const { id } = req.params as { id: string };
         const { name, email, password } = req.body as { name: string, email: string, password: string };
 
@@ -144,7 +144,7 @@ export default async function userRoutes(app: FastifyInstance) {
         });
     });
 
-    app.delete('/users/:id', { preHandler: [app.authenticateUser, app.authenticateAdmin] }, async (req, rep) => {
+    app.delete('/users/:id', { preHandler: [app.authenticateAdmin] }, async (req, rep) => {
         const { id } = req.params as { id: string }
         const user = await prisma.user.delete({
             where: {

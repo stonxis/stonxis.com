@@ -4,6 +4,6 @@ Authorization: Bearer `token`
 
 {
     "name": "test",
-    "email": "testtttt@test.com",
+    "email": "test@test.com",
     "password": "test"
 }
