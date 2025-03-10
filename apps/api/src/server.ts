@@ -8,10 +8,12 @@ import { registerJwt } from "./config/jwt";
 import { authenticateAdmin } from "./hooks/authenticateAdmin";
 import { authenticateUser } from "./hooks/authenticateUser";
 import adminRoute from "./routes/admin";
+import { registerCookies } from "./config/cookies";
 
 registerRateLimit(app)
 registerCors(app)
 registerJwt(app)
+registerCookies(app)
 
 app.addHook('onSend', addHeaders)
 

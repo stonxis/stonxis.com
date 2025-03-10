@@ -12,6 +12,7 @@
   "author": "neveshardd",
   "license": "ISC",
   "dependencies": {
+    "@fastify/cookie": "^11.0.2",
     "@fastify/cors": "^11.0.0",
     "@fastify/jwt": "^9.0.4",
     "@fastify/rate-limit": "^10.2.2",

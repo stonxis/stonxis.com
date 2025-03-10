@@ -69,6 +69,12 @@ export default async function authRoutes(app: FastifyInstance) {
             { expiresIn: '1d' }
         )
 
+        rep.setCookie('token', token, {
+            httpOnly: true,
+            secure: true,
+            maxAge: 86400
+        })
+
         rep.code(200).send({
             token,
             message: 'Login realizado com sucesso.'
@@ -77,5 +83,12 @@ export default async function authRoutes(app: FastifyInstance) {
 
     app.get('/profile', { preHandler: [app.authenticateUser] }, async (req, rep) => {
         rep.send(req.user)
+    })
+
+    app.get('/logout', async (req, rep) => {
+        rep.clearCookie('token')
+        rep.send({
+            message: 'Logout realizado com sucesso.'
+        })
     })
 }

@@ -1,14 +1,16 @@
-import Component from './components/comp-485'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
 
-function App() {
+export default function App() {
 
   return (
-    <>
-      <div className='p-6'>
-      <Component />
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="*" element={<div>Página não encontrada</div>} />
+      </Routes>
+    </Router>
   )
 }
-
-export default App

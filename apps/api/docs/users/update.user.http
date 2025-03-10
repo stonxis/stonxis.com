@@ -4,5 +4,5 @@ Authorization: Bearer `token`
 ## Você pode passar nome, senha e email se quiser.
 
 {
-    "name": "José Eugênio"
+    "name": "test"
 }
