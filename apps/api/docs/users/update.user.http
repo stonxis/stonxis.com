@@ -1,0 +1,7 @@
+PUT http://localhost:3333/users/id HTTP/1.1
+Content-Type: application/json
+## Você pode passar nome, senha e email se quiser.
+
+{
+    "name": "José Eugênio"
+}

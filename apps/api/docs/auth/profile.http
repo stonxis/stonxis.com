@@ -1,0 +1,2 @@
+GET http://localhost:3333/profile HTTP/1.1
+Authorization: Bearer `token`
