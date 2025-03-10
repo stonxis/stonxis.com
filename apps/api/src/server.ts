@@ -7,6 +7,7 @@ import { registerCors } from "./config/cors";
 import { registerJwt } from "./config/jwt";
 import { authenticateAdmin } from "./hooks/authenticateAdmin";
 import { authenticateUser } from "./hooks/authenticateUser";
+import adminRoute from "./routes/admin";
 
 registerRateLimit(app)
 registerCors(app)
@@ -19,6 +20,7 @@ app.decorate('authenticateUser', authenticateUser)
 
 app.register(authRoutes)
 app.register(userRoutes)
+app.register(adminRoute)
 
 app.get('/', async () => {
     return {
