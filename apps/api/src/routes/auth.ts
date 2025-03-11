@@ -91,4 +91,25 @@ export default async function authRoutes(app: FastifyInstance) {
             message: 'Logout realizado com sucesso.'
         })
     })
+
+    app.post('/refresh-token', { preHandler: [app.authenticateUser] }, async (req, rep) => {
+        const user = req.user as { id: string; name: string; email: string }
+        const token = app.jwt.sign({
+            id: user.id,
+            name: user.name,
+            email: user.email
+        },
+            { expiresIn: '1d' }
+        )
+        rep.setCookie('token', token, {
+            httpOnly: true,
+            secure: true,
+            maxAge: 86400
+        })
+        rep.send({
+            token,
+            message: 'Token atualizado com sucesso.'
+        })
+    })
+
 }

@@ -1,6 +1,5 @@
-export default function LoginPage() {
-  return (
-    <form>
-    </form>
-  );
+export default function Login(){
+  return(
+    <div></div>
+  )
 }

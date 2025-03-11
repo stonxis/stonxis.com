@@ -11,21 +11,14 @@ export default async function userRoutes(app: FastifyInstance) {
             createdAt?: Date,
         }
 
+        const { page = 1, perPage = 10 } = req.query as { page: number, perPage: number }
+
         const users = await prisma.user.findMany({
-            where: {
-                id,
-                name,
-                email,
-                createdAt,
-            }
+            skip: (page - 1) * perPage,
+            take: perPage,
         })
-        rep.status(200).send(users.map(user => ({
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            createdAt: user.createdAt,
-            updatedAt: user.updatedAt
-        })))
+
+        rep.status(200).send(users.map(({ password, ...user}) => user))
     })
 
     app.post('/users', { preHandler: [app.authenticateAdmin] }, async (req, rep) => {
@@ -88,11 +81,12 @@ export default async function userRoutes(app: FastifyInstance) {
 
     app.put('/users/:id', { preHandler: [app.authenticateAdmin] }, async (req, rep) => {
         const { id } = req.params as { id: string };
-        const { name, email, password } = req.body as { name: string, email: string, password: string };
+        const { name, email, password } = req.body as { name?: string; email?: string; password?: string };
+        const updateData: any = { name, email };
 
         let hashedPassword = password;
         if (password) {
-            hashedPassword = await bcrypt.hash(password, 10);
+            updateData.password = await bcrypt.hash(password, 10);
         }
 
         const userExists = await prisma.user.findUnique({
@@ -126,9 +120,9 @@ export default async function userRoutes(app: FastifyInstance) {
                 id
             },
             data: {
-                name,
-                email,
-                password: hashedPassword
+                ...(name && { name }),
+                ...(email && { email }),
+                ...(password && { password: hashedPassword })
             }
         });
 
@@ -142,9 +136,8 @@ export default async function userRoutes(app: FastifyInstance) {
             },
             message: 'Usuário atualizado com sucesso.'
         });
-    });
 
-    app.delete('/users/:id', { preHandler: [app.authenticateAdmin] }, async (req, rep) => {
+    });    app.delete('/users/:id', { preHandler: [app.authenticateAdmin] }, async (req, rep) => {
         const { id } = req.params as { id: string }
         const user = await prisma.user.delete({
             where: {

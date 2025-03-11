@@ -10,38 +10,47 @@ import { authenticateUser } from "./hooks/authenticateUser";
 import adminRoute from "./routes/admin";
 import { registerCookies } from "./config/cookies";
 
-registerRateLimit(app)
-registerCors(app)
-registerJwt(app)
-registerCookies(app)
+console.log("Configurando serviços...");
 
-app.addHook('onSend', addHeaders)
+registerRateLimit(app);
+console.log("Rate Limit configurado");
 
-app.decorate('authenticateAdmin', authenticateAdmin)
-app.decorate('authenticateUser', authenticateUser)
+registerCors(app);
+console.log("CORS configurado");
 
-app.register(authRoutes)
-app.register(userRoutes)
-app.register(adminRoute)
+registerJwt(app);
+console.log("JWT configurado");
 
-app.get('/', async () => {
-    return {
-        message: 'Stonxis API'
-    }
-})
+registerCookies(app);
+console.log("Cookies configurados");
 
+app.addHook("onSend", addHeaders);
+
+app.decorate("authenticateAdmin", authenticateAdmin);
+app.decorate("authenticateUser", authenticateUser);
+
+app.register(authRoutes);
+app.register(userRoutes);
+app.register(adminRoute);
+
+app.get("/", async () => {
+    return { message: "Stonxis API" };
+});
+
+// Função para iniciar o servidor
 const start = async () => {
     try {
-        const port = 3333
-        const host = '0.0.0.0'
-        await app.listen({
-            port,
-            host
-        })
-        app.log.info(`Server listening at http://${host}:${port}`)
+        const port = 3333;
+        const host = "0.0.0.0";
+
+        console.log(`Iniciando servidor em http://${host}:${port}`);
+        await app.listen({ port, host });
+
+        app.log.info(`Servidor rodando em http://${host}:${port}`);
     } catch (err) {
-        app.log.error(err)
-        process.exit(1)
+        app.log.error("Erro ao iniciar o servidor:", err);
+        process.exit(1);
     }
-}
-start()
+};
+
+start();

@@ -4,30 +4,20 @@ export const authenticateAdmin = async (req: any, rep: any) => {
     try {
         await req.jwtVerify();
 
-        const userId = req.user.id;
-
         const user = await prisma.user.findUnique({
-            where: {
-                id: userId
-            }
+            where: { id: req.user.id },
+            select: { id: true, role: true }
         });
 
         if (!user) {
-            return rep.status(401).send({
-                message: 'Usuário não encontrado'
-            });
+            return rep.status(401).send({ message: "Usuário não encontrado." });
         }
-        
-        if (user.role !== 'ADMIN') {
-            return rep.status(401).send({
-                message: 'Você não tem permissão para acessar essa rota.',
-                role: req.user.role
-            });
+
+        if (user.role !== "ADMIN") {
+            return rep.status(403).send({ message: "Acesso negado." });
         }
 
     } catch (err) {
-        return rep.status(401).send({
-            message: 'Token inválido'
-        });
+        return rep.status(401).send({ message: "Token inválido." });
     }
 };
