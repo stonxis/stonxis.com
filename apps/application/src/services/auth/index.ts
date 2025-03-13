@@ -5,7 +5,12 @@ import { Resend } from "resend";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { MagicLinkEmail } from "../../../../emails";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resendApiKey = process.env.RESEND_API_KEY;
+if (!resendApiKey) {
+  throw new Error("API key is missing");
+}
+
+const resend = new Resend(resendApiKey);
 const port = process.env.EMAIL_SERVER_PORT ? Number(process.env.EMAIL_SERVER_PORT) : undefined
 
 export const {
@@ -41,10 +46,9 @@ export const {
                     });
 
                 } catch (err) {
+                    console.error("Erro ao enviar o e-mail:", err);
                 }
             }
         }),
     ]
 });
-
-resend.apiKeys.list()
