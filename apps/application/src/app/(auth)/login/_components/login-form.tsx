@@ -18,6 +18,22 @@ export function LoginForm() {
   const { register, handleSubmit, setValue } = useForm()
   const [email, setEmail] = useState("")
 
+  const onSubmitGoogle = async () => {
+    try {
+      await signIn("google")
+    } catch (err: any) {
+      toast.error(err.message)
+    }
+  }
+
+  const onSubmitFacebook = async () => {
+    try {
+      await signIn("facebook")
+    } catch (err: any) {
+      toast.error(err.message)
+    }
+  }
+
   const onSubmit = async (data: any) => {
     try {
       await signIn("email", {
@@ -71,11 +87,11 @@ export function LoginForm() {
       </form>
       <Separator className="mx-auto"/>
       <div className="flex flex-col space-y-4">
-        <Button className="w-full cursor-pointer text-white" variant='outline'>
+        <Button className="w-full cursor-pointer text-white" variant='outline' onClick={onSubmitGoogle}>
           <FcGoogle />
            Entrar com o Google
         </Button>
-        <Button className="w-full cursor-pointer text-white" variant='outline'>
+        <Button className="w-full cursor-pointer text-white" variant='outline' onClick={onSubmitFacebook}>
         <FaFacebook className="text-blue-600 bg-white rounded-full" />
           Entrar com o Facebook
         </Button>
