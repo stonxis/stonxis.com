@@ -235,6 +235,12 @@ importers:
       depcheck:
         specifier: ^1.4.7
         version: 1.4.7
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
+      gyp:
+        specifier: ^0.5.0
+        version: 0.5.0
       lucide-react:
         specifier: ^0.479.0
         version: 0.479.0(react@19.0.0)
@@ -4338,6 +4344,10 @@ packages:
       react: ^18.0.0
       react-dom: ^18.0.0
 
+  coa@0.3.9:
+    resolution: {integrity: sha512-8TgPAMVP++o+HkSdgygRKyaEcBXJSi3Q14/tlxkHcStzZB6PnNL87vFJQMKot8Jl1piXYdQv5LShNtWG6NQtBw==}
+    engines: {node: '>= 0.6.0'}
+
   collapse-white-space@2.1.0:
     resolution: {integrity: sha512-loKTxY1zCOuG4j9f6EPnuyyYkf58RnhhWTvRoZEokgB+WbdXehfjFviyOVYkqzEWz1Q5kRiZdBYS5SwxbQYwzw==}
 
@@ -4870,6 +4880,10 @@ packages:
 
   dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
+
+  dotenv@16.4.7:
+    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
 
   dunder-proto@1.0.1:
@@ -5630,6 +5644,21 @@ packages:
     resolution: {integrity: sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==}
     engines: {node: '>=6.0'}
 
+  gyp-conditions@0.0.4:
+    resolution: {integrity: sha512-Ujk+AIqg2fxUlZfNypoXsKyifsydBpCv4FXuKe8FPDkEzB7bSaKUMA8JwAl8QzDjKLLJWzF2FK4BECA7+V1dPg==}
+
+  gyp-expansions@0.0.2:
+    resolution: {integrity: sha512-qwWnxe6WsJpkOO2P0KkHfy7cS9TGei36SpJ8BhM3TlUnMK39vCvYHRCxn+bvLq5x5fvvlmBHmzNqkavzKgLoIQ==}
+
+  gyp-load@0.5.0:
+    resolution: {integrity: sha512-tMw5tCz4rXZcGoQ3u7waBFGQqUmSnIjISvOu6cILCDxz3ijBaRAD0X1ElmJA7whbiTweBXs3569HoDN/ZH/0gA==}
+
+  gyp-merge@0.2.1:
+    resolution: {integrity: sha512-FLhsImhG2Nh5vFo42Ed8HUQn7AXBkjJi7hvYhxI1NVIU6TgtfF/Z6JHluR3zuk5UEU3yyLSsEfqw2Amd4tV27w==}
+
+  gyp@0.5.0:
+    resolution: {integrity: sha512-qmOXMp0rd23mu9S5YYrrOxK6citZd51cuWpcDcY+WO2+PcZY9hCJZRDwPHzaZjhWPQ2I7VMC79SVzOPcQmuyPg==}
+
   gzip-size@6.0.0:
     resolution: {integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==}
     engines: {node: '>=10'}
@@ -6232,6 +6261,9 @@ packages:
   json-buffer@3.0.1:
     resolution: {integrity: sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==}
 
+  json-ometajs@0.0.1:
+    resolution: {integrity: sha512-kamoEM32HmnETMJSiMlH3rgoD5wPvEaahHBjGWfNr8gixI6+XExdigfJcwCz5Kz55hgGhTOmjuPOu4UcVlWQMw==}
+
   json-parse-even-better-errors@2.3.1:
     resolution: {integrity: sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==}
 
@@ -6258,6 +6290,9 @@ packages:
 
   jsonfile@6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
+
+  jsonic-ometajs@0.0.0:
+    resolution: {integrity: sha512-VBUL7n0I8hln+64gc1RiGnkSpk09t7L+jhpPiGVKN40YyEPle+4mmWNpjNx4lIWBiBlAD9cEN3ncbSZZ5a9Hiw==}
 
   jsx-ast-utils@3.3.5:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
@@ -7023,6 +7058,11 @@ packages:
   obuf@1.1.2:
     resolution: {integrity: sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg==}
 
+  ometajs@3.2.4:
+    resolution: {integrity: sha512-Usw3SnzRqklgU2kFJNrO+8npseWuywNyTL5LC0q47IM/7AS0AEWzeNRmLf8I77xTeU3y88gwY8eTApQ0oCjcGg==}
+    engines: {node: '>=0.4.0'}
+    hasBin: true
+
   on-exit-leak-free@2.1.2:
     resolution: {integrity: sha512-0eJJY6hXLGf1udHwfNftBqH+g73EU4B504nZeKpz1sYRKafAghwxEJunB2O7rDZkL4PGfsMVnTXZ2EjibbqcsA==}
     engines: {node: '>=14.0.0'}
@@ -7770,6 +7810,14 @@ packages:
   pupa@3.1.0:
     resolution: {integrity: sha512-FLpr4flz5xZTSJxSeaheeMKN/EDzMdK7b8PTOC6a5PYFKTucWbdqjgqaEyH0shFiSJrVB1+Qqi4Tk19ccU6Aug==}
     engines: {node: '>=12.20'}
+
+  q@0.8.12:
+    resolution: {integrity: sha512-mvLmeFP7lwVSFzDhpVhkI9Jw3u9goGQ2IY9nbSNMA4OZyviFjs2XILKMesUz8nBz4deKS9eWibvEuBNlRxZHBg==}
+    engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
+    deprecated: |-
+      You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+
+      (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
 
   qs@6.13.0:
     resolution: {integrity: sha512-+38qI9SOr8tfZ4QmJNplMUxqjbe7LKvvZgWdExBOmd+egZTtjLB67Gu0HRX3u/XOq7UU2Nx6nsjvS16Z9uwfpg==}
@@ -8862,9 +8910,14 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  uglify-js@1.3.5:
+    resolution: {integrity: sha512-YPX1DjKtom8l9XslmPFQnqWzTBkvI4N0pbkzLuPZZ4QTyig0uQqvZz9NgUdfEV+qccJzi7fVcGWdESvRIjWptQ==}
+    hasBin: true
+
   uglify-js@3.19.3:
     resolution: {integrity: sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==}
     engines: {node: '>=0.8.0'}
+    hasBin: true
 
   unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
@@ -14070,6 +14123,10 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
+  coa@0.3.9:
+    dependencies:
+      q: 0.8.12
+
   collapse-white-space@2.1.0: {}
 
   color-convert@1.9.3:
@@ -14630,6 +14687,8 @@ snapshots:
       is-obj: 2.0.0
 
   dotenv@16.0.3: {}
+
+  dotenv@16.4.7: {}
 
   dunder-proto@1.0.1:
     dependencies:
@@ -15709,6 +15768,28 @@ snapshots:
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
 
+  gyp-conditions@0.0.4:
+    dependencies:
+      ometajs: 3.2.4
+
+  gyp-expansions@0.0.2:
+    optionalDependencies:
+      ometajs: 3.2.4
+
+  gyp-load@0.5.0:
+    dependencies:
+      gyp-merge: 0.2.1
+      jsonic-ometajs: 0.0.0
+
+  gyp-merge@0.2.1: {}
+
+  gyp@0.5.0:
+    dependencies:
+      gyp-conditions: 0.0.4
+      gyp-expansions: 0.0.2
+      gyp-load: 0.5.0
+      gyp-merge: 0.2.1
+
   gzip-size@6.0.0:
     dependencies:
       duplexer: 0.1.2
@@ -16401,6 +16482,10 @@ snapshots:
 
   json-buffer@3.0.1: {}
 
+  json-ometajs@0.0.1:
+    dependencies:
+      ometajs: 3.2.4
+
   json-parse-even-better-errors@2.3.1: {}
 
   json-schema-ref-resolver@2.0.1:
@@ -16424,6 +16509,11 @@ snapshots:
       universalify: 2.0.1
     optionalDependencies:
       graceful-fs: 4.2.11
+
+  jsonic-ometajs@0.0.0:
+    dependencies:
+      json-ometajs: 0.0.1
+      ometajs: 3.2.4
 
   jsx-ast-utils@3.3.5:
     dependencies:
@@ -17425,6 +17515,12 @@ snapshots:
 
   obuf@1.1.2: {}
 
+  ometajs@3.2.4:
+    dependencies:
+      coa: 0.3.9
+      q: 0.8.12
+      uglify-js: 1.3.5
+
   on-exit-leak-free@2.1.2: {}
 
   on-finished@2.4.1:
@@ -18257,6 +18353,8 @@ snapshots:
   pupa@3.1.0:
     dependencies:
       escape-goat: 4.0.0
+
+  q@0.8.12: {}
 
   qs@6.13.0:
     dependencies:
@@ -19624,6 +19722,8 @@ snapshots:
   typescript@5.7.3: {}
 
   typescript@5.8.2: {}
+
+  uglify-js@1.3.5: {}
 
   uglify-js@3.19.3:
     optional: true
