@@ -11,7 +11,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const port = process.env.EMAIL_SERVER_PORT ? Number(process.env.EMAIL_SERVER_PORT) : undefined
 
 export const {
-    handlers: { GET, POST },
+    handlers,
     auth,
 } = NextAuth({
     pages: {
