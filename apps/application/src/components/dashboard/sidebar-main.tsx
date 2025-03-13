@@ -53,7 +53,7 @@ export function SidebarMain() {
     }
 
     return (
-        <div className="w-72 h-screen fixed top-0 left-0 flex flex-col border-r border-st-border z-10 px-2">
+        <div className="w-64 h-screen fixed top-0 left-0 flex flex-col border-r border-st-border z-10 px-2">
             <div>
                 <h1 className="text-2xl font-semibold p-4 text-white">Stonxis</h1>
             </div>

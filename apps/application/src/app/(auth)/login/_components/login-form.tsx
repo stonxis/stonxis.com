@@ -1,17 +1,22 @@
 "use client"
 
 import type React from "react"
+import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useForm } from "react-hook-form"
 import { signIn } from "next-auth/react"
 import { toast } from "sonner"
+import { Separator } from "@/components/ui/separator"
+import { FcGoogle } from "react-icons/fc"
+import { FaFacebook } from "react-icons/fa"
+import { IoMdClose } from "react-icons/io"
 
 export function LoginForm() {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, setValue } = useForm()
+  const [email, setEmail] = useState("")
 
   const onSubmit = async (data: any) => {
     try {
@@ -26,28 +31,55 @@ export function LoginForm() {
     }
   }
 
+  const clearEmail = () => {
+    setEmail("")
+    setValue("email", "")
+  }
+
   return (
-    <Card>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <CardContent>
-          <div className="space-y-2 mb-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="você@exemplo.com"
-              required
-              {...register("email")}
-            />
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button className="w-full cursor-pointer" type="submit">
-            Enviar link mágico
-          </Button>
-        </CardFooter>
+    <div className="space-y-12 p-4 rounded-md lg:border lg:p-12">
+      <div className="text-center font-bold text-3xl text-white">
+        Entrar
+      </div>
+      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+        <Label htmlFor="email" className="text-white">Magic link</Label>
+        <div className="relative">
+          <Input
+            id="email"
+            type="email"
+            placeholder="Insira seu email"
+            required
+            {...register("email")}
+            className="w-full p-2 rounded-md pr-8"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {email && (
+            <button
+              type="button"
+              onClick={clearEmail}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+            >
+              <IoMdClose size={18} className="cursor-pointer" />
+            </button>
+          )}
+        </div>
+
+        <button className="w-full cursor-pointer bg-st-button-main p-2 rounded-md text-black font-semibold" type="submit">
+          Enviar link
+        </button>
       </form>
-    </Card>
+      <Separator className="mx-auto"/>
+      <div className="flex flex-col space-y-4">
+        <Button className="w-full cursor-pointer text-white" variant='outline'>
+          <FcGoogle />
+           Entrar com o Google
+        </Button>
+        <Button className="w-full cursor-pointer text-white" variant='outline'>
+        <FaFacebook className="text-blue-600 bg-white rounded-full" />
+          Entrar com o Facebook
+        </Button>
+      </div>
+    </div>
   )
 }
-

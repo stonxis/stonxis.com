@@ -21,7 +21,7 @@ type Props = {
 export function NavbarMain({ user }: Props) {
     if (!user) return
     return (
-        <div className="border-b border-st-border p-4 flex justify-between items-center">
+        <div className="border-b border-st-border px-8 py-4 flex justify-between items-center">
             <div>
                 <SearchOriginUI />
             </div>
@@ -35,9 +35,9 @@ export function NavbarMain({ user }: Props) {
                             </Avatar>
                             <div className="flex flex-col">
                                 <h3 className="text-xs">{user.name}</h3>
-                                <div className="flex items-center space-x-1 text-xs text-st-text-secondary">
-                                    <p>Plan</p>
-                                    <span className="px-2 bg-green-500/10 rounded-full text-st-text-active">Free</span>
+                                <div className="flex flex-col space-x-1 text-xs text-st-text-secondary gap-1">
+                                    <p className="text-md">Plan</p>
+                                    <span className="px-2 bg-green-500/10 rounded-full text-st-text-active text-xs">Free</span>
                                 </div>
                             </div>
                         </div>

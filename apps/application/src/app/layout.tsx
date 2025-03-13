@@ -17,7 +17,7 @@ export default function RootLayout({ children }: Readonly<{children: React.React
   return (
     <html lang="pt-BR">
       <body
-        className={`${geistSans.variable} antialiased bg-st-background text-st-text dark`}
+        className={`${geistSans.variable} antialiased text-st-text dark`}
       >
         {children}
         <Toaster />

@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       <body className={`${geistSans.variable} antialiased `} suppressHydrationWarning>
         <div className="flex">
           <SidebarMain />
-          <div className="flex-1 ml-72">
+          <div className="flex-1 ml-64">
             <NavbarMain user={session?.user} />
             <div className="px-4 py-4">
               {children}
