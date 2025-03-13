@@ -31,7 +31,7 @@ export function NavbarMain({ user }: Props) {
                         <div className="cursor-pointer flex items-center space-x-2">
                             <Avatar>
                                 <AvatarImage src={user.image || '/fallback.png'} alt={user.name || 'User avatar'} />
-                                <AvatarFallback>{user.name ? user.name[0].toUpperCase() : '?'}</AvatarFallback>
+                                <AvatarFallback>{user.email ? user.email[0].toUpperCase() : '?'}</AvatarFallback>
                             </Avatar>
                             <div className="flex flex-col">
                                 <h3 className="text-xs">{user.name}</h3>
