@@ -6,7 +6,6 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { MagicLinkEmail } from "../../../../emails";
 
 const resendApiKey = process.env.RESEND_API_KEY;
-// Instead of throwing an error immediately, we'll initialize Resend only if the API key exists
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 const port = process.env.EMAIL_SERVER_PORT ? Number(process.env.EMAIL_SERVER_PORT) : undefined
 
