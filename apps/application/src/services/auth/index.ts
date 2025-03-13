@@ -35,11 +35,15 @@ export const {
             from: process.env.EMAIL_FROM,
             async sendVerificationRequest({ identifier, url }) {
                 if (!resendApiKey) {
-                    throw new Error("API key is missing");
+                    console.error("RESEND_API_KEY is missing. Please add it to your environment variables.");
+                    // Instead of throwing an error, we'll return early with a log message
+                    return;
                 }
                 
                 if (!resend) {
-                    throw new Error("Resend client is not initialized");
+                    console.error("Resend client is not initialized. Please check your environment variables.");
+                    // Instead of throwing an error, we'll return early with a log message
+                    return;
                 }
                 
                 try {
