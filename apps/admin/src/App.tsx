@@ -1,19 +1,14 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
-import { Login } from './pages/Login'
-import { Dashboard } from './pages/Dashboard'
-import { ProtectedRoute } from './api/hooks/protectedRoute'
+// App.tsx
+import { RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { router } from "./api/routes/route";
 
-export default function App() {
+const queryClient = new QueryClient();
 
-  return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route element={<ProtectedRoute />}>
-          <Route path="/" element={<Dashboard />} />
-        </Route>
-        <Route path="*" element={<Navigate to="/login" />} />
-      </Routes>
-    </Router>
-  )
-}
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+  </QueryClientProvider>
+);
+
+export default App;
