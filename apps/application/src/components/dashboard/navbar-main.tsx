@@ -30,7 +30,7 @@ export function NavbarMain({ user }: Props) {
                     <DropdownMenuTrigger asChild>
                         <div className="cursor-pointer flex items-center space-x-2">
                             <Avatar>
-                                <AvatarImage src={user.image || '/fallback.png'} alt={user.name || 'User avatar'} />
+                                <AvatarImage src={user.image || ''} alt={user.name || 'User avatar'} />
                                 <AvatarFallback>{user.email ? user.email[0].toUpperCase() : '?'}</AvatarFallback>
                             </Avatar>
                             <div className="flex flex-col">
