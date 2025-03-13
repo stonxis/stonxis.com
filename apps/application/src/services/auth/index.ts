@@ -13,6 +13,7 @@ export const {
     handlers: { GET, POST},
     auth,
 } = NextAuth({
+    trustHost: true,
     pages: {
         signIn: "/login",
         signOut: "/login",
@@ -21,6 +22,18 @@ export const {
         newUser: "/"
     },
     adapter: PrismaAdapter(prisma),
+    cookies: {
+        sessionToken: {
+            name: `authjs.session-token`,
+            options: {
+                httpOnly: true,
+                sameSite: "lax",
+                path: "/",
+                secure: process.env.NODE_ENV === "production",
+                domain: process.env.NODE_ENV === "production" ? ".stonxis.com" : undefined,
+            },
+        },
+    },
     providers: [
         EmailProvider({
             server: {
