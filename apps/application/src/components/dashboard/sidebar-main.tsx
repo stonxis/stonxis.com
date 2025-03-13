@@ -42,8 +42,14 @@ export function SidebarMain() {
     const getActiveClasses = (href: string) => {
         const isActive = pathname === href
         return isActive
-            ? { indicator: 'bg-st-text-active transition-none focus:outline-noe', link: 'bg-gradient-one text-st-text-active transition-none focus:outline-noe' }
-            : { indicator: 'bg-transparent transition-none focus:outline-noe', link: 'bg-transparent transition-none focus:outline-noe' }
+            ? { 
+                indicator: 'bg-st-text-active transition-all focus:outline-none', 
+                link: 'bg-gradient-one text-st-text-active transition-all focus:outline-none rounded-r-sm' 
+              }
+            : { 
+                indicator: 'bg-transparent transition-all focus:outline-none ', 
+                link: 'text-st-text hover:text-white transition-all focus:outline-none duration-200 hover:rounded-sm' 
+              }
     }
 
     return (
@@ -55,13 +61,13 @@ export function SidebarMain() {
                 <div className="p-4 space-y-4">
                     <div className="space-y-2">
                         <h2 className="text-xs font-semibold uppercase">Financial</h2>
-                        <ul className="flex flex-col">
+                        <ul className="flex flex-col gap-1">
                             {links.financial.map((link, index) => {
                                 const classes = getActiveClasses(link.href)
                                 return (
-                                    <li key={index} className="flex items-center">
-                                        <div className={`h-9 w-1 ${classes.indicator}`}></div>
-                                        <Link href={link.href} className={`flex items-center py-2 pl-2 w-full ${classes.link}`}>
+                                    <li key={index} className="flex items-center group">
+                                        <div className={`h-9 w-1 ${classes.indicator} `}></div>
+                                        <Link href={link.href} className={`flex items-center py-2 pl-2 w-full ${classes.link} transition-all duration-200 `}>
                                             <div className="mr-2">{link.icon}</div>
                                             <span className="text-sm">{link.name}</span>
                                         </Link>
@@ -72,13 +78,13 @@ export function SidebarMain() {
                     </div>
                     <div className="space-y-2">
                         <h2 className="text-xs font-semibold uppercase">Knowledge</h2>
-                        <ul className="flex flex-col">
+                        <ul className="flex flex-col gap-1">
                             {links.knowledge.map((link, index) => {
                                 const classes = getActiveClasses(link.href)
                                 return (
-                                    <li key={index} className="flex items-center">
+                                    <li key={index} className="flex items-center group">
                                         <div className={`h-9 w-1 ${classes.indicator}`}></div>
-                                        <Link href={link.href} className={`flex items-center py-2 pl-2 w-full ${classes.link}`}>
+                                        <Link href={link.href} className={`flex items-center py-2 pl-2 w-full ${classes.link} rounded-r transition-all duration-200`}>
                                             <div className="mr-2">{link.icon}</div>
                                             <span className="text-sm">{link.name}</span>
                                         </Link>
@@ -90,13 +96,13 @@ export function SidebarMain() {
                 </div>
             </div>
             <div className="py-4 px-4">
-                <ul className="flex flex-col">
+                <ul className="flex flex-col gap-1">
                     {links.footer.map((link, index) => {
                         const classes = getActiveClasses(link.href)
                         return (
-                            <li key={index} className="flex items-center">
+                            <li key={index} className="flex items-center group">
                                 <div className={`h-9 w-1 ${classes.indicator}`}></div>
-                                <Link href={link.href} className={`flex items-center py-2 pl-2 w-full ${classes.link}`}>
+                                <Link href={link.href} className={`flex items-center py-2 pl-2 w-full ${classes.link} rounded-r transition-all duration-200`}>
                                     <div className="mr-2">{link.icon}</div>
                                     <span className="text-sm">{link.name}</span>
                                 </Link>

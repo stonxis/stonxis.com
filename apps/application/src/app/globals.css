@@ -43,8 +43,9 @@
   --st-text: oklch(65.93% 0.0083 228.92);
   --st-border: oklch(26.16% 0.0047 145.44);
   --st-text-active: oklch(77.52% 0.1194 189.51);
+  --st-background-hover: oklch(20.2% 0.0241 190.69);
 
-  --st-gradient-1: linear-gradient(45deg, oklch(77.52% 0.1194 189.51 / 15%), oklch(77.52% 0.1194 189.51 / 0%));
+  --st-gradient-1: linear-gradient(45deg, oklch(77.52% 0.1194 189.51 / 10%), oklch(77.52% 0.1194 189.51 / 0%));
 
   .bg-gradient-one {
     background: var(--st-gradient-1);
@@ -129,6 +130,7 @@
   --color-st-text: var(--st-text);
   --color-st-border: var(--st-border);
   --color-st-text-active: var(--st-text-active);
+  --color-st-background-hover: var(--st-background-hover);
 
 }
 
