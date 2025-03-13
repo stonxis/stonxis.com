@@ -30,11 +30,10 @@ export function NavbarMain({ user }: Props) {
                     <DropdownMenuTrigger asChild>
                         <div className="cursor-pointer flex items-center space-x-2">
                             <Avatar>
-                                <AvatarImage src={user.image || ''} alt={user.name || 'User avatar'} />
+                                <AvatarImage src={user.image || ''} alt={'User avatar'} />
                                 <AvatarFallback>{user.email ? user.email[0].toUpperCase() : '?'}</AvatarFallback>
                             </Avatar>
                             <div className="flex flex-col">
-                                <h3 className="text-xs">{user.name}</h3>
                                 <div className="flex flex-col space-x-1 text-xs text-st-text-secondary gap-1">
                                     <p className="text-md">Plan</p>
                                     <span className="px-2 bg-green-500/10 rounded-full text-st-text-active text-xs">Free</span>
