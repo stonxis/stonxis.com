@@ -1,8 +1,6 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -13,10 +11,15 @@ import { Separator } from "@/components/ui/separator"
 import { FcGoogle } from "react-icons/fc"
 import { FaFacebook } from "react-icons/fa"
 import { IoMdClose } from "react-icons/io"
+import { Loader } from "lucide-react"
+
+type FormData = {
+  email: string
+}
 
 export function LoginForm() {
-  const { register, handleSubmit, setValue } = useForm()
-  const [email, setEmail] = useState("")
+  const { register, handleSubmit, setValue, watch, formState: { isSubmitting } } = useForm<FormData>()
+  const email = watch("email")
 
   const onSubmitGoogle = async () => {
     try {
@@ -34,7 +37,7 @@ export function LoginForm() {
     }
   }
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: FormData) => {
     try {
       await signIn("email", {
         email: data.email,
@@ -48,7 +51,6 @@ export function LoginForm() {
   }
 
   const clearEmail = () => {
-    setEmail("")
     setValue("email", "")
   }
 
@@ -67,8 +69,7 @@ export function LoginForm() {
             required
             {...register("email")}
             className="w-full p-2 rounded-md pr-8"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            disabled={isSubmitting}
           />
           {email && (
             <button
@@ -81,19 +82,37 @@ export function LoginForm() {
           )}
         </div>
 
-        <button className="w-full cursor-pointer bg-st-button-main p-2 rounded-md text-black font-semibold" type="submit">
-          Enviar link
+        <button className="w-full cursor-pointer bg-st-button-main p-2 rounded-md text-black font-semibold flex items-center justify-center" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? <Loader className="animate-spin"/> : "Enviar link"}
         </button>
       </form>
       <Separator className="mx-auto"/>
       <div className="flex flex-col space-y-4">
-        <Button className="w-full cursor-pointer text-white" variant='outline' onClick={onSubmitGoogle}>
-          <FcGoogle />
-           Entrar com o Google
+        <Button 
+          className="w-full cursor-pointer text-white" 
+          variant='outline' 
+          onClick={handleSubmit(onSubmitGoogle)} 
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? <Loader className="animate-spin"/> : (
+            <>
+              <FcGoogle />
+              Entrar com o Google
+            </>
+          )}
         </Button>
-        <Button className="w-full cursor-pointer text-white" variant='outline' onClick={onSubmitFacebook}>
-        <FaFacebook className="text-blue-600 bg-white rounded-full" />
-          Entrar com o Facebook
+        <Button 
+          className="w-full cursor-pointer text-white" 
+          variant='outline' 
+          onClick={handleSubmit(onSubmitFacebook)} 
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? <Loader className="animate-spin"/> : (
+            <>
+              <FaFacebook className="text-blue-600 bg-white rounded-full" />
+              Entrar com o Facebook
+            </>
+          )}
         </Button>
       </div>
     </div>
