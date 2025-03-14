@@ -38,7 +38,7 @@ export default function SearchOriginUI() {
   return (
     <>
       <button
-        className="border-input bg-background text-foreground placeholder:text-muted-foreground/70 focus-visible:border-ring focus-visible:ring-ring/50 inline-flex h-9 w-sm rounded-md border px-3 py-2 text-sm shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px]"
+        className="border-input bg-background text-foreground placeholder:text-muted-foreground/70 focus-visible:border-ring focus-visible:ring-ring/50 inline-flex h-9 w-[210px] md:w-[400px] rounded-md border px-3 py-2 text-xs shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px]"
         onClick={() => setOpen(true)}
       >
         <span className="flex grow items-center">
@@ -47,7 +47,7 @@ export default function SearchOriginUI() {
             size={16}
             aria-hidden="true"
           />
-          <span className="text-muted-foreground/70 font-normal">Search courses, expenses, leagues...</span>
+          <span className="text-muted-foreground/70 font-normal">Search leagues...</span>
         </span>
         <kbd className="bg-background text-muted-foreground/70 ms-12 -me-1 inline-flex h-5 max-h-full items-center rounded border px-1 font-[inherit] text-[0.625rem] font-medium">
           ⌘K

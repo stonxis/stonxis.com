@@ -53,7 +53,7 @@ export function SidebarMain() {
     }
 
     return (
-        <div className="w-64 h-screen fixed top-0 left-0 flex flex-col border-r border-st-border z-10 px-2">
+        <div className="w-64 h-screen fixed top-0 left-0 lg:flex flex-col border-r border-st-border z-10 px-2 hidden">
             <div>
                 <h1 className="text-2xl font-semibold p-4 text-white">Stonxis</h1>
             </div>
@@ -95,7 +95,7 @@ export function SidebarMain() {
                     </div>
                 </div>
             </div>
-            <div className="py-4 px-4">
+            <div className="pb-6 px-4">
                 <ul className="flex flex-col gap-1">
                     {links.footer.map((link, index) => {
                         const classes = getActiveClasses(link.href)
