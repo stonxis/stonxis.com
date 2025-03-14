@@ -12,33 +12,44 @@ import { FcGoogle } from "react-icons/fc"
 import { FaFacebook } from "react-icons/fa"
 import { IoMdClose } from "react-icons/io"
 import { Loader } from "lucide-react"
+import { useState } from "react"
 
 type FormData = {
   email: string
 }
 
+type LoadingState = "email" | "google" | "facebook" | null
+
 export function LoginForm() {
-  const { register, handleSubmit, setValue, watch, formState: { isSubmitting } } = useForm<FormData>()
+  const { register, handleSubmit, setValue, watch } = useForm<FormData>()
+  const [loadingState, setLoadingState] = useState<LoadingState>(null)
   const email = watch("email")
 
   const onSubmitGoogle = async () => {
     try {
+      setLoadingState("google")
       await signIn("google")
     } catch (err: any) {
       toast.error(err.message)
+    } finally {
+      setLoadingState(null)
     }
   }
 
   const onSubmitFacebook = async () => {
     try {
+      setLoadingState("facebook")
       await signIn("facebook")
     } catch (err: any) {
       toast.error(err.message)
+    } finally {
+      setLoadingState(null)
     }
   }
 
   const onSubmit = async (data: FormData) => {
     try {
+      setLoadingState("email")
       await signIn("email", {
         email: data.email,
         redirect: false,
@@ -47,12 +58,16 @@ export function LoginForm() {
       toast.success("Email enviado, verifique a caixa de entrada do seu email")
     } catch (err: any) {
       toast.error(err.message)
+    } finally {
+      setLoadingState(null)
     }
   }
 
   const clearEmail = () => {
     setValue("email", "")
   }
+
+  const isLoading = loadingState !== null
 
   return (
     <div className="space-y-12 p-4 rounded-md lg:border lg:p-12">
@@ -69,7 +84,7 @@ export function LoginForm() {
             required
             {...register("email")}
             className="w-full p-2 rounded-md pr-8"
-            disabled={isSubmitting}
+            disabled={isLoading}
           />
           {email && (
             <button
@@ -82,8 +97,12 @@ export function LoginForm() {
           )}
         </div>
 
-        <button className="w-full cursor-pointer bg-st-button-main p-2 rounded-md text-black font-semibold flex items-center justify-center" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? <Loader className="animate-spin"/> : "Enviar link"}
+        <button 
+          className="w-full cursor-pointer bg-st-button-main p-2 rounded-md text-black font-semibold flex items-center justify-center" 
+          type="submit" 
+          disabled={isLoading}
+        >
+          {loadingState === "email" ? <Loader className="animate-spin"/> : "Enviar link"}
         </button>
       </form>
       <Separator className="mx-auto"/>
@@ -92,9 +111,9 @@ export function LoginForm() {
           className="w-full cursor-pointer text-white" 
           variant='outline' 
           onClick={handleSubmit(onSubmitGoogle)} 
-          disabled={isSubmitting}
+          disabled={isLoading}
         >
-          {isSubmitting ? <Loader className="animate-spin"/> : (
+          {loadingState === "google" ? <Loader className="animate-spin"/> : (
             <>
               <FcGoogle />
               Entrar com o Google
@@ -105,9 +124,9 @@ export function LoginForm() {
           className="w-full cursor-pointer text-white" 
           variant='outline' 
           onClick={handleSubmit(onSubmitFacebook)} 
-          disabled={isSubmitting}
+          disabled={isLoading}
         >
-          {isSubmitting ? <Loader className="animate-spin"/> : (
+          {loadingState === "facebook" ? <Loader className="animate-spin"/> : (
             <>
               <FaFacebook className="text-blue-600 bg-white rounded-full" />
               Entrar com o Facebook
