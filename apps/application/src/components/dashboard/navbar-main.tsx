@@ -13,12 +13,13 @@ import {
 } from "../ui/dropdown-menu";
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, MessageSquare } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import { links } from "./sidebar-main";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import NotificationsOriginUI from "../notification-originui";
 
 type Props = {
     user: Session['user']
@@ -109,7 +110,10 @@ export function NavbarMain({ user }: Props) {
                 </Sheet>
             </div>
             <SearchOriginUI />
-            <div>
+            <div className="flex gap-3 items-center">
+                <div>
+                    <NotificationsOriginUI />
+                </div>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <div className="cursor-pointer flex items-center space-x-2">
