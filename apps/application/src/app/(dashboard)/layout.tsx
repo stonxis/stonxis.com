@@ -25,7 +25,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             <SidebarMain />
             <div className="flex-1 lg:ml-56">
               <NavbarMain user={session?.user} />
-              <div className="px-4 py-4 mt-17">
+              <div className="p-6 mt-14">
               <CookieConsent />
                 {children}
               </div>

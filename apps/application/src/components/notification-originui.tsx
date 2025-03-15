@@ -100,7 +100,7 @@ export default function NotificationsOriginUI() {
         <Button size="icon" variant="outline" className="relative" aria-label="Open notifications">
           <BellIcon size={16} aria-hidden="true" />
           {unreadCount > 0 && (
-            <Badge className="absolute -top-2 left-full min-w-5 -translate-x-1/2 px-1">
+            <Badge className="absolute -top-2 left-full min-w-5 -translate-x-1/2 px-1 bg-gradient-to-r from-teal-500 to-teal-300 border ">
               {unreadCount > 99 ? "99+" : unreadCount}
             </Badge>
           )}

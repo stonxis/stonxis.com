@@ -9,7 +9,6 @@ import {
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
-    DropdownMenuShortcut
 } from "../ui/dropdown-menu";
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
@@ -44,7 +43,7 @@ export function NavbarMain({ user }: Props) {
     }
 
     return (
-        <div className="border-b px-4 py-4 flex justify-between items-center fixed top-0 left-0 right-0 bg-background z-40">
+        <div className="border-b px-4 py-3 flex justify-between items-center fixed top-0 left-0 right-0 bg-background z-40">
             <div className="flex items-center lg:hidden">
                 <Sheet>
                     <SheetTrigger asChild>
