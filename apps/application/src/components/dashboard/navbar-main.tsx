@@ -134,7 +134,7 @@ export function NavbarMain({ user }: Props) {
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
-                            <Link href="/appearance">
+                            <Link href="/settings#appearance">
                                 <DropdownMenuItem className="cursor-pointer">
                                     Appearance
                                 </DropdownMenuItem>
