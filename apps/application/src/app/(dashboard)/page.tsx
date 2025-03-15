@@ -84,7 +84,7 @@ export default function Home() {
           </TableBody>
         </Table>
       </div>
-      <div className="flex flex-col gap-4 justify-center border bg-gradient-to-tr from-transparent via-teal-500/10 to-teal-500/5 rounded-xl p-6">
+      <div className="flex flex-col gap-4 justify-center border bg-gradient-to-tr from-teal-500/1 via-teal-500/15 to-teal-500/2 dark:via-teal-500/3 dark:from-transparent dark:to-transparent rounded-xl p-6">
         <div className="flex justify-between items-center text-current/50">
           <span>Accounts Overview</span>
           <Wallet className="w-6 h-6"/>
