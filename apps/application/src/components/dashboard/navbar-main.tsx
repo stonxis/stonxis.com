@@ -152,9 +152,9 @@ export function NavbarMain({ user }: Props) {
                 <DialogTrigger asChild>
                     <Button
                         variant="outline"
-                        className="fixed bottom-7 right-8 px-3 py-5 rounded-full border-teal-600 hover:border-teal-500 text-teal-600 hover:text-teal-500 z-50 cursor-pointer hover:bg-accent transition-colors"
+                        className="fixed bottom-7 right-8 px-3 py-5 rounded-full bg-gradient-to-tr from-teal-500 to-teal-200 z-50 cursor-pointer hover:bg-accent transition-colors"
                     >
-                        <MessageSquare className="h-7 w-7" />
+                        <MessageSquare className="h-7 w-7 text-background stroke-3" />
                     </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
