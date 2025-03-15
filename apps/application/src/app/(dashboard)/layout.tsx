@@ -4,10 +4,11 @@ import "@/app/globals.css";
 import { SidebarMain } from "@/components/dashboard/sidebar-main";
 import { NavbarMain } from "@/components/dashboard/navbar-main";
 import { auth } from "@/services/auth";
+import { ThemeProvider } from "next-themes";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const geist = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist',
 });
 
 export const metadata: Metadata = {
@@ -18,17 +19,19 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const session = await auth()
   return (
-    <html lang="pt-BR">
-      <body className={`${geistSans.variable} antialiased`} suppressHydrationWarning>
-        <div className="flex">
-          <SidebarMain />
-          <div className="flex-1 lg:ml-56">
-            <NavbarMain user={session?.user} />
-            <div className="px-4 py-4 mt-17">
-              {children}
+    <html lang="pt-BR" suppressHydrationWarning>
+      <body className={geist.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="flex">
+            <SidebarMain />
+            <div className="flex-1 lg:ml-56">
+              <NavbarMain user={session?.user} />
+              <div className="px-4 py-4 mt-17">
+                {children}
+              </div>
             </div>
           </div>
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   );

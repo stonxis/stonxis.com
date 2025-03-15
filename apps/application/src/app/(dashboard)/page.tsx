@@ -107,11 +107,11 @@ export default function Home() {
             <p>$5.879,000</p>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-1">
-          <Link href="/" className="border border-teal-500 rounded-xl text-teal-500 text-sm flex items-center justify-center gap-1 py-2 cursor-pointer hover:border-teal-500 hover:text-current hover:bg-teal-500/50 transition-colors"> <Plus className="w-4 h-4"/> Add</Link>
-          <Link href="/" className="border border-teal-500 rounded-xl text-teal-500 text-sm flex items-center justify-center gap-1 py-2 cursor-pointer hover:border-teal-500 hover:text-current hover:bg-teal-500/50 transition-colors"> <Send className="w-4 h-4"/> Send</Link>
-          <Link href="/" className="border border-teal-500 rounded-xl text-teal-500 text-sm flex items-center justify-center gap-1 py-2 cursor-pointer hover:border-teal-500 hover:text-current hover:bg-teal-500/50 transition-colors"> <CreditCard className="w-4 h-4"/> Request</Link>
-          <Link href="/" className="border border-teal-500 rounded-xl text-teal-500 text-sm flex items-center justify-center gap-1 py-2 cursor-pointer hover:border-teal-500 hover:text-current hover:bg-teal-500/50 transition-colors"> <Ellipsis className="w-4 h-4"/> More</Link>
+        <div className="grid grid-cols-2 gap-2">
+          <Link href="/" className="border font-semibold border-teal-500 rounded-xl text-teal-500 text-sm flex items-center justify-center gap-1 py-2 cursor-pointer hover:border-teal-500 hover:text-current hover:bg-teal-500/50 transition-colors"> <Plus className="w-4 h-4"/> Add</Link>
+          <Link href="/" className="border font-semibold border-teal-500 rounded-xl text-teal-500 text-sm flex items-center justify-center gap-1 py-2 cursor-pointer hover:border-teal-500 hover:text-current hover:bg-teal-500/50 transition-colors"> <Send className="w-4 h-4"/> Send</Link>
+          <Link href="/" className="border font-semibold border-teal-500 rounded-xl text-teal-500 text-sm flex items-center justify-center gap-1 py-2 cursor-pointer hover:border-teal-500 hover:text-current hover:bg-teal-500/50 transition-colors"> <CreditCard className="w-4 h-4"/> Request</Link>
+          <Link href="/" className="border font-semibold border-teal-500 rounded-xl text-teal-500 text-sm flex items-center justify-center gap-1 py-2 cursor-pointer hover:border-teal-500 hover:text-current hover:bg-teal-500/50 transition-colors"> <Ellipsis className="w-4 h-4"/> More</Link>
         </div>
       </div>
       <div className="border lg:col-span-2">objectives</div>

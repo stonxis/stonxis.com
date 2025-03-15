@@ -14,7 +14,7 @@ import {
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
 import { MenuIcon, MessageSquare } from "lucide-react";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import { links } from "./sidebar-main";
 import Link from "next/link";
@@ -55,6 +55,7 @@ export function NavbarMain({ user }: Props) {
                     <SheetContent side="left" className="w-[280px] p-0">
                         <SheetHeader>
                             <SheetTitle>Stonxis</SheetTitle>
+                            <SheetDescription className="hidden"></SheetDescription>
                         </SheetHeader>
                         <div className="flex flex-col h-full">
                             <div className="flex-1 overflow-y-auto">
@@ -134,10 +135,12 @@ export function NavbarMain({ user }: Props) {
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
-                            <DropdownMenuItem>
-                                Profile
-                                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-                            </DropdownMenuItem>
+                            <Link href="/theme">
+                                <DropdownMenuItem>
+                                    Theme
+                                    <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                                </DropdownMenuItem>
+                            </Link>
                             <DropdownMenuItem>
                                 Billing
                                 <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
@@ -164,7 +167,7 @@ export function NavbarMain({ user }: Props) {
                 <DialogTrigger asChild>
                     <Button
                         variant="outline"
-                        className="fixed bottom-7 right-8 px-3 py-5 rounded-full border-teal-600 hover:border-teal-500 text-teal-600 hover:text-teal-500 z-50 cursor-pointer hover:bg-accent"
+                        className="fixed bottom-7 right-8 px-3 py-5 rounded-full border-teal-600 hover:border-teal-500 text-teal-600 hover:text-teal-500 z-50 cursor-pointer hover:bg-accent transition-colors"
                     >
                         <MessageSquare className="h-7 w-7" />
                     </Button>
