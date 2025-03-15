@@ -2,7 +2,7 @@
 
 import { Progress } from "@/components/ui/progress";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { CreditCard, Car, Pizza, TrendingUp } from "lucide-react";
+import { CreditCard, Car, Pizza, TrendingUp, Wallet, Plus, Send, Ellipsis } from "lucide-react";
 import React from "react";
 
 const transactions = [
@@ -44,7 +44,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="grid lg:grid-cols-3 grid-cols-1 gap-4">
+    <main className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
       <div className="border lg:col-span-2 p-6 space-y-4 rounded-xl">
         <h4 className="font-bold text-xl text-white">Transactions</h4>
         <Table>
@@ -83,7 +83,36 @@ export default function Home() {
           </TableBody>
         </Table>
       </div>
-      <div className="border">accounts overview</div>
+      <div className="flex flex-col gap-4 justify-center border bg-gradient-to-tr from-transparent to-teal-950/30 rounded-xl p-6">
+        <div className="flex justify-between items-center">
+          <span>Accounts Overview</span>
+          <Wallet />
+        </div>
+        <div>
+          <h2 className="text-white font-bold text-2xl">$6.446,500</h2>
+          <span>Total balance across all accounts</span>
+        </div>
+        <div>
+          <div className="flex justify-between items-center">
+            <span>Checking</span>
+            <p className="text-white">$7.500</p>
+          </div>
+          <div className="flex justify-between items-center">
+            <span>Savings</span>
+            <p className="text-white">$560.000</p>
+          </div>
+          <div className="flex justify-between items-center">
+            <span>Investiment</span>
+            <p className="text-white">$5.879,000</p>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          <button className="border border-teal-500 rounded-md text-teal-500 text-sm flex items-center justify-center gap-2 py-1"> <Plus className="w-4 h-4"/> Add</button>
+          <button className="border border-teal-500 rounded-md text-teal-500 text-sm flex items-center justify-center gap-2 py-1"> <Send className="w-4 h-4"/> Send</button>
+          <button className="border border-teal-500 rounded-md text-teal-500 text-sm flex items-center justify-center gap-2 py-1"> <CreditCard className="w-4 h-4"/> Request</button>
+          <button className="border border-teal-500 rounded-md text-teal-500 text-sm flex items-center justify-center gap-2 py-1"> <Ellipsis className="w-4 h-4"/> More</button>
+        </div>
+      </div>
       <div className="border lg:col-span-2">objectives</div>
       <div className="border">other</div>
       <div className="border lg:col-span-2 p-6 gap-4 rounded-xl flex flex-col">
