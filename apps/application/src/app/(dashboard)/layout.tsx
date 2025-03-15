@@ -4,7 +4,7 @@ import "@/app/globals.css";
 import { SidebarMain } from "@/components/dashboard/sidebar-main";
 import { NavbarMain } from "@/components/dashboard/navbar-main";
 import { auth } from "@/services/auth";
-import { ThemeProvider } from "next-themes";
+import CookieConsent from "../cookie-consent";
 
 const geist = Geist({
   subsets: ['latin'],
@@ -21,17 +21,16 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={geist.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex">
             <SidebarMain />
             <div className="flex-1 lg:ml-56">
               <NavbarMain user={session?.user} />
               <div className="px-4 py-4 mt-17">
+              <CookieConsent />
                 {children}
               </div>
             </div>
           </div>
-        </ThemeProvider>
       </body>
     </html>
   );

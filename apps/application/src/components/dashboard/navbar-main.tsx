@@ -13,7 +13,7 @@ import {
 } from "../ui/dropdown-menu";
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
-import { MenuIcon, MessageSquare } from "lucide-react";
+import { LogOut, MenuIcon, MessageSquare } from "lucide-react";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import { links } from "./sidebar-main";
@@ -135,29 +135,15 @@ export function NavbarMain({ user }: Props) {
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
-                            <Link href="/theme">
-                                <DropdownMenuItem>
-                                    Theme
-                                    <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                            <Link href="/appearance">
+                                <DropdownMenuItem className="cursor-pointer">
+                                    Appearance
                                 </DropdownMenuItem>
                             </Link>
-                            <DropdownMenuItem>
-                                Billing
-                                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                                Settings
-                                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                                Keyboard shortcuts
-                                <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-                            </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer">
-                            Log out
-                            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+                           <LogOut /> Log out
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>

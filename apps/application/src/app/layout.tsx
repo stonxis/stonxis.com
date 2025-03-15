@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
+import CookieConsent from "./cookie-consent";
 
 const geist = Geist({
   subsets: ['latin'],
@@ -20,7 +21,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <SessionProvider>
       <html lang="pt-BR" suppressHydrationWarning>
         <body className={geist.className}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+            <CookieConsent />
             {children}
           </ThemeProvider>
           <Toaster />
