@@ -44,23 +44,20 @@ export function SidebarMain() {
         return isActive
             ? { 
                 indicator: 'bg-st-text-active transition-all focus:outline-none', 
-                link: 'bg-gradient-one text-st-text-active transition-all focus:outline-none rounded-r-sm' 
+                link: 'bg-gradient-to-r from-teal-500/20 text-teal-500 transition-all focus:outline-none rounded-r-sm' 
               }
             : { 
-                indicator: 'bg-transparent transition-all focus:outline-none ', 
-                link: 'text-st-text hover:text-white transition-all focus:outline-none duration-200 hover:rounded-sm' 
+                indicator: 'bg-transparent', 
+                link: 'hover:text-current/60 transition-all duration-300' 
               }
     }
 
     return (
-        <div className="w-56 h-screen fixed top-0 left-0 lg:flex flex-col border-r border-st-border z-10 px-2 hidden">
-            <div>
-                <h1 className="text-2xl font-semibold p-4 text-white">Stonxis</h1>
-            </div>
-            <div className="flex-1">
+        <div className="w-56 h-screen fixed top-0 left-0 lg:flex flex-col border-r z-10 px-2 hidden">
+            <div className="flex-1 mt-16">
                 <div className="p-4 space-y-4">
                     <div className="space-y-2">
-                        <h2 className="text-xs font-semibold uppercase">Financial</h2>
+                        <h2 className="text-xs font-semibold uppercase text-current/50">Financial</h2>
                         <ul className="flex flex-col gap-1">
                             {links.financial.map((link, index) => {
                                 const classes = getActiveClasses(link.href)
@@ -77,7 +74,7 @@ export function SidebarMain() {
                         </ul>
                     </div>
                     <div className="space-y-2">
-                        <h2 className="text-xs font-semibold uppercase">Knowledge</h2>
+                        <h2 className="text-xs font-semibold uppercase text-current/50">Knowledge</h2>
                         <ul className="flex flex-col gap-1">
                             {links.knowledge.map((link, index) => {
                                 const classes = getActiveClasses(link.href)

@@ -34,17 +34,17 @@ export function NavbarMain({ user }: Props) {
         const isActive = pathname === href
         return isActive
             ? {
-                indicator: 'bg-st-text-active transition-all focus:outline-none',
-                link: 'bg-gradient-one text-st-text-active transition-all focus:outline-none rounded-r-sm'
+                indicator: 'bg-teal-500 transition-all focus:outline-none',
+                link: 'bg-gradient-to-r from-teal-500/20 to-transparent text-teal-500 transition-all focus:outline-none rounded-r-sm'
             }
             : {
                 indicator: 'bg-transparent transition-all focus:outline-none',
-                link: 'text-st-text hover:text-white transition-all focus:outline-none duration-200 hover:rounded-sm'
+                link: 'hover:text-current/50 transition-all focus:outline-none duration-200 hover:rounded-sm'
             }
     }
 
     return (
-        <div className="border-b border-st-border px-4 py-4 flex justify-between items-center fixed top-0 left-0 right-0 bg-background z-40">
+        <div className="border-b px-4 py-4 flex justify-between items-center fixed top-0 left-0 right-0 bg-background z-40">
             <div className="flex items-center lg:hidden">
                 <Sheet>
                     <SheetTrigger asChild>
@@ -60,7 +60,7 @@ export function NavbarMain({ user }: Props) {
                             <div className="flex-1 overflow-y-auto">
                                 <div className="p-4 space-y-4">
                                     <div className="space-y-2">
-                                        <h2 className="text-xs font-semibold uppercase">Financial</h2>
+                                        <h2 className="text-xs font-semibold uppercase text-current/50">Financial</h2>
                                         <ul className="flex flex-col gap-1">
                                             {links.financial.map((link, index) => {
                                                 const classes = getActiveClasses(link.href)
@@ -77,7 +77,7 @@ export function NavbarMain({ user }: Props) {
                                         </ul>
                                     </div>
                                     <div className="space-y-2">
-                                        <h2 className="text-xs font-semibold uppercase">Knowledge</h2>
+                                        <h2 className="text-xs font-semibold uppercase text-current/50">Knowledge</h2>
                                         <ul className="flex flex-col gap-1">
                                             {links.knowledge.map((link, index) => {
                                                 const classes = getActiveClasses(link.href)
@@ -116,15 +116,15 @@ export function NavbarMain({ user }: Props) {
                 </Sheet>
             </div>
 
-            <h1 className="hidden lg:block font-bold text-2xl text-white">STONXIS</h1>
+            <h1 className="hidden lg:block font-bold text-2xl">STONXIS</h1>
             <SearchOriginUI />
 
             <div className="flex gap-3 items-center">
                 <NotificationsOriginUI />
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 rounded-full">
-                            <Avatar>
+                        <Button variant="ghost" className="h-8 w-8 rounded-full cursor-pointer">
+                            <Avatar className="border-2 w-9 h-9">
                                 <AvatarImage src={user.image || ''} alt="User avatar" />
                                 <AvatarFallback>{user.email ? user.email[0].toUpperCase() : '?'}</AvatarFallback>
                             </Avatar>
@@ -164,12 +164,12 @@ export function NavbarMain({ user }: Props) {
                 <DialogTrigger asChild>
                     <Button
                         variant="outline"
-                        className="fixed bottom-7 right-8 px-3 py-5 rounded-full hover:bg-teal-50 border-teal-600 hover:border-teal-500 text-teal-600 hover:text-teal-500 z-50"
+                        className="fixed bottom-7 right-8 px-3 py-5 rounded-full border-teal-600 hover:border-teal-500 text-teal-600 hover:text-teal-500 z-50 cursor-pointer hover:bg-accent"
                     >
                         <MessageSquare className="h-7 w-7" />
                     </Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
                         <DialogTitle>Chat AI Agent</DialogTitle>
                         <DialogDescription>

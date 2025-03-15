@@ -19,12 +19,12 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   const session = await auth()
   return (
     <html lang="pt-BR">
-      <body className={`${geistSans.variable} antialiased `} suppressHydrationWarning>
+      <body className={`${geistSans.variable} antialiased`} suppressHydrationWarning>
         <div className="flex">
           <SidebarMain />
           <div className="flex-1 lg:ml-56">
             <NavbarMain user={session?.user} />
-            <div className="px-4 py-4 mt-18">
+            <div className="px-4 py-4 mt-17">
               {children}
             </div>
           </div>

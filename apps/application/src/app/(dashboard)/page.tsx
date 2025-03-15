@@ -1,8 +1,9 @@
 "use client"
 
-import { Progress } from "@/components/ui/progress";
+import { ProgressGoal } from "@/components/dashboard/goal/progress-goal";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { CreditCard, Car, Pizza, TrendingUp, Wallet, Plus, Send, Ellipsis } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 const transactions = [
@@ -46,7 +47,7 @@ export default function Home() {
   return (
     <main className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
       <div className="border lg:col-span-2 p-6 space-y-4 rounded-xl">
-        <h4 className="font-bold text-xl text-white">Transactions</h4>
+        <h4 className="font-bold text-xl">Transactions</h4>
         <Table>
           <TableCaption></TableCaption>
           <TableHeader>
@@ -83,55 +84,55 @@ export default function Home() {
           </TableBody>
         </Table>
       </div>
-      <div className="flex flex-col gap-4 justify-center border bg-gradient-to-tr from-transparent to-teal-950/30 rounded-xl p-6">
-        <div className="flex justify-between items-center">
+      <div className="flex flex-col gap-4 justify-center border bg-gradient-to-tr from-transparent via-teal-500/10 to-teal-500/5 rounded-xl p-6">
+        <div className="flex justify-between items-center text-current/50">
           <span>Accounts Overview</span>
-          <Wallet />
+          <Wallet className="w-6 h-6"/>
         </div>
         <div>
-          <h2 className="text-white font-bold text-2xl">$6.446,500</h2>
-          <span>Total balance across all accounts</span>
+          <h2 className="font-bold text-2xl">$6.446,500</h2>
+          <span className="text-current/50">Total balance across all accounts</span>
         </div>
         <div>
           <div className="flex justify-between items-center">
-            <span>Checking</span>
-            <p className="text-white">$7.500</p>
+            <span className="text-current/50">Checking</span>
+            <p>$7.500</p>
           </div>
           <div className="flex justify-between items-center">
-            <span>Savings</span>
-            <p className="text-white">$560.000</p>
+            <span className="text-current/50">Savings</span>
+            <p>$560.000</p>
           </div>
           <div className="flex justify-between items-center">
-            <span>Investiment</span>
-            <p className="text-white">$5.879,000</p>
+            <span className="text-current/50">Investiment</span>
+            <p>$5.879,000</p>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-2">
-          <button className="border border-teal-500 rounded-md text-teal-500 text-sm flex items-center justify-center gap-2 py-1"> <Plus className="w-4 h-4"/> Add</button>
-          <button className="border border-teal-500 rounded-md text-teal-500 text-sm flex items-center justify-center gap-2 py-1"> <Send className="w-4 h-4"/> Send</button>
-          <button className="border border-teal-500 rounded-md text-teal-500 text-sm flex items-center justify-center gap-2 py-1"> <CreditCard className="w-4 h-4"/> Request</button>
-          <button className="border border-teal-500 rounded-md text-teal-500 text-sm flex items-center justify-center gap-2 py-1"> <Ellipsis className="w-4 h-4"/> More</button>
+        <div className="grid grid-cols-2 gap-1">
+          <Link href="/" className="border border-teal-500 rounded-xl text-teal-500 text-sm flex items-center justify-center gap-1 py-2 cursor-pointer hover:border-teal-500 hover:text-current hover:bg-teal-500/50 transition-colors"> <Plus className="w-4 h-4"/> Add</Link>
+          <Link href="/" className="border border-teal-500 rounded-xl text-teal-500 text-sm flex items-center justify-center gap-1 py-2 cursor-pointer hover:border-teal-500 hover:text-current hover:bg-teal-500/50 transition-colors"> <Send className="w-4 h-4"/> Send</Link>
+          <Link href="/" className="border border-teal-500 rounded-xl text-teal-500 text-sm flex items-center justify-center gap-1 py-2 cursor-pointer hover:border-teal-500 hover:text-current hover:bg-teal-500/50 transition-colors"> <CreditCard className="w-4 h-4"/> Request</Link>
+          <Link href="/" className="border border-teal-500 rounded-xl text-teal-500 text-sm flex items-center justify-center gap-1 py-2 cursor-pointer hover:border-teal-500 hover:text-current hover:bg-teal-500/50 transition-colors"> <Ellipsis className="w-4 h-4"/> More</Link>
         </div>
       </div>
       <div className="border lg:col-span-2">objectives</div>
       <div className="border">other</div>
       <div className="border lg:col-span-2 p-6 gap-4 rounded-xl flex flex-col">
-        <h4>Goal</h4>
+        <h4 className="text-current/50">Goal</h4>
         <div className="flex justify-between">
-          <h3 className="text-white">Honda Civic 2025</h3>
-          <TrendingUp />
+          <h3>Honda Civic 2025</h3>
+          <TrendingUp className="text-current/50"/>
         </div>
         <div className="flex flex-col gap-2">
           <div className="flex justify-between">
-            <span className="text-xs px-2 py-1 bg-cyan-950 text-cyan-300 rounded-full">On Track</span>
-            <span>$74.000 / $100.000</span>
+            <span className="text-xs px-2 py-1 bg-teal-800/10 text-teal-500 rounded-full">On Track</span>
+            <span className="text-current/50">$74.000 / $100.000</span>
           </div>
           <div>
-            <Progress value={progress} className="w-full" />
+            <ProgressGoal value={progress} className="w-full fill-teal-500" />
           </div>
           <div className="flex justify-between">
             <span>$100.000</span>
-            <span>75% Complete</span>
+            <span className="text-current/50">75% Complete</span>
           </div>
         </div>
       </div>
